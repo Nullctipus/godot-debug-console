@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://bifs6xdp3jycb"]
+
+[ext_resource type="Script" path="res://addons/console/console_gui.gd" id="1_avw67"]
+[ext_resource type="Script" path="res://addons/console/propagate_event.gd" id="2_t4yhv"]
+
+[node name="console" type="Control" node_paths=PackedStringArray("base_panel", "log", "input")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_avw67")
+base_panel = NodePath("Panel")
+log = NodePath("Panel/Log")
+input = NodePath("Panel/Console")
+
+[node name="Panel" type="Panel" parent="." node_paths=PackedStringArray("reciever")]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 405.0
+script = ExtResource("2_t4yhv")
+reciever = NodePath("..")
+
+[node name="Console" type="TextEdit" parent="Panel" node_paths=PackedStringArray("reciever")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 365.0
+offset_right = 710.0
+offset_bottom = 395.0
+script = ExtResource("2_t4yhv")
+reciever = NodePath("../..")
+
+[node name="Log" type="RichTextLabel" parent="Panel" node_paths=PackedStringArray("reciever")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 710.0
+offset_bottom = 355.0
+focus_mode = 2
+scroll_following = true
+autowrap_mode = 0
+shortcut_keys_enabled = false
+selection_enabled = true
+visible_characters_behavior = 2
+script = ExtResource("2_t4yhv")
+reciever = NodePath("../..")
+
+[node name="Panel" type="Panel" parent="Panel/Log"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
