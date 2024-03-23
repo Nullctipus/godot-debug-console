@@ -53,3 +53,6 @@ my_string: Hello, Godot!
 ## Installation
 1. Clone this repository or download the zip and extract it 
 2. Copy the `addons` folder to your project folder
+
+
+## Tested on Godot 4.2.1 llvm static wayland build commit fe01776
