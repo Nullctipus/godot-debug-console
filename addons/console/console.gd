@@ -16,7 +16,7 @@ static func _parse_quotes(args : PackedStringArray) -> PackedStringArray:
 		if parsing:
 			if arg.ends_with("\"") && !arg.ends_with("\\\""):
 				parsing = false
-				working += arg.substr(0,arg.length()-1);
+				working += " "+arg.substr(0,arg.length()-1);
 				new_args.append(working)
 			else:
 				working += " "+arg;
@@ -60,7 +60,7 @@ static func exec(line : String):
 				return
 			if convar.type == ConsoleVar.Type.STRING:
 				convar.data = args[1];
-				for argv in range(2,args.size()-1):
+				for argv in range(2,args.size()):
 					convar.data += " "+ args[argv]
 			if convar.type == ConsoleVar.Type.FLOAT:
 				convar.data = float(args[1]);
