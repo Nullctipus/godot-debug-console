@@ -26,6 +26,10 @@ static func _parse_quotes(args : PackedStringArray) -> PackedStringArray:
 			if arg.begins_with("\""):
 				parsing = true
 				working = arg.substr(1)
+				if working.ends_with("\"") && !working.ends_with("\\\"") :
+					parsing = false
+					working = working.substr(0,working.length()-1);
+					new_args.append(working)
 			else:
 				new_args.append(arg)
 				
